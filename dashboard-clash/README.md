@@ -1,10 +1,12 @@
-# Analizador de Clanes Clash of Clans
-## Mision M3 Reactor CoreComo probarlo:
-Abre la terminal en la carpeta del proyecto, ejecuta npm install para instalar las dependencias y luego npm run dev para arrancar el servidor. Veras el panel de control interactivo con los datos del clan Andaluces Unios.
+# Chef Analytics Dashboard
+Misión M3 Reactor Core
 
-## Uso de IA:
-Toda esta practica la he hecho con la ayuda de la inteligencia artificial paso a paso. Le pedi que me dividiera el proyecto en componentes pequeños para no hacer un componente-dios y que me escribiera la logica. Mi trabajo ha sido ensamblar los archivos, probar en el navegador con el servidor local para asegurar que no habia errores y configurar los datos del mockData para que todo encajara con mi clan.
+## Cómo probarlo
+Abre la terminal en la carpeta del proyecto, ejecuta `npm install` y luego `npm run dev`. La aplicación se conectará en vivo a la API pública de TheMealDB.
 
-## Autopsia:
-1. Valores derivados en lugar de estado duplicado. El top 3 de donadores y el total de miembros los calculo al vuelo durante el renderizado del componente DashboardClan. Descarte usar un useState nuevo para guardarlos porque habria duplicado datos inutilmente y la rubrica exige usar el estado minimo indispensable.
-2. Abstraer la logica a un custom hook. He metido el useEffect y el AbortController en un archivo separado llamado useClashAPI. Descarte hacer el fetch simulado directamente en el App porque habria ensuciado el componente principal con logica asincrona, y de paso asi me aseguro los puntos del bonus.
+## Uso de IA
+He utilizado IA para asegurar el cumplimiento estricto de las rúbricas de React. Le pedí que estructurara un panel analítico en lugar de una lista básica usando la API de TheMealDB. El código lo integré por fases, comprobando en el navegador que el `useEffect` gestionaba correctamente las peticiones a la API pública real y que los estilos CSS funcionaban. 
+
+## Autopsia
+1. Transformación de datos y valores derivados: En lugar de crear un estado (`useState`) para guardar el recuento de países de origen, utilizo `.reduce()` y `.sort()` para calcular el Top 3 de orígenes directamente en el renderizado de `DashboardRecetas`. Descarté usar un estado separado porque la rúbrica exige estado mínimo y habría duplicado datos innecesariamente.
+2. Abstracción a un Custom Hook: Extraje el `fetch` y el `AbortController` al archivo `useMealAPI.js`. Descarté hacer la petición de red en `App.jsx` porque habría generado un componente-dios inflado de lógica asíncrona.

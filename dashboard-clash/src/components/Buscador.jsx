@@ -1,17 +1,13 @@
-// Archivo: src/components/Buscador.jsx
-
-export default function Buscador({ tag, onTagChange }) {
+export default function Buscador({ termino, onTerminoChange }) {
   return (
     <div className="buscador">
-      <label htmlFor="clanInput">Buscar Clan (Tag):</label>
-      
-      {/* Input controlado: su valor lo dicta React, no el navegador[cite: 92] */}
+      <label htmlFor="inputBusqueda">Buscar ingrediente (ej. chicken, beef, salad):</label>
       <input
-        id="clanInput"
+        id="inputBusqueda"
         type="text"
-        value={tag} 
-        onChange={(e) => onTagChange(e.target.value)} // Comunicamos el cambio hacia el padre[cite: 87]
-        placeholder="Ej: #R9QR9QC"
+        value={termino}
+        onChange={(e) => onTerminoChange(e.target.value)}
+        placeholder="Escribe en inglés..."
       />
     </div>
   );
