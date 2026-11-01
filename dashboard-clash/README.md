@@ -1,16 +1,10 @@
-# React + Vite
+# Analizador de Clanes Clash of Clans
+## Mision M3 Reactor CoreComo probarlo:
+Abre la terminal en la carpeta del proyecto, ejecuta npm install para instalar las dependencias y luego npm run dev para arrancar el servidor. Veras el panel de control interactivo con los datos del clan Andaluces Unios.
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## Uso de IA:
+Toda esta practica la he hecho con la ayuda de la inteligencia artificial paso a paso. Le pedi que me dividiera el proyecto en componentes pequeños para no hacer un componente-dios y que me escribiera la logica. Mi trabajo ha sido ensamblar los archivos, probar en el navegador con el servidor local para asegurar que no habia errores y configurar los datos del mockData para que todo encajara con mi clan.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Autopsia:
+1. Valores derivados en lugar de estado duplicado. El top 3 de donadores y el total de miembros los calculo al vuelo durante el renderizado del componente DashboardClan. Descarte usar un useState nuevo para guardarlos porque habria duplicado datos inutilmente y la rubrica exige usar el estado minimo indispensable.
+2. Abstraer la logica a un custom hook. He metido el useEffect y el AbortController en un archivo separado llamado useClashAPI. Descarte hacer el fetch simulado directamente en el App porque habria ensuciado el componente principal con logica asincrona, y de paso asi me aseguro los puntos del bonus.
